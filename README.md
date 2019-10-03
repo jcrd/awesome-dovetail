@@ -41,6 +41,9 @@ awful.tag.add("dovetail", {
 })
 ```
 
+See the [API documentation](https://jcrd.github.io/awesome-dovetail/) for
+descriptions of all functions.
+
 ## License
 
 awesome-dovetail is licensed under the GNU General Public License v3.0 or later
