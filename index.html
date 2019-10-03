@@ -1,0 +1,556 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>awesome-dovetail API documentation</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>awesome-dovetail</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>awesome-dovetail</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>awesome-dovetail</code></h1>
+<p>A tiling layout featuring two visible tiled clients.</p>
+<p></p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: 2019 James Reed</li>
+        <li><strong>Author</strong>: James Reed &lt;jcrd@tuta.io&gt;</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#get_tag">get_tag (s)</a></td>
+	<td class="summary">Override this function to change how dovetail determines the current tag.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#layout.master">layout.master (s)</a></td>
+	<td class="summary">Get the master client.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#layout.masterp">layout.masterp (c)</a></td>
+	<td class="summary">Master client predicate.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#layout.get">layout.get (s)</a></td>
+	<td class="summary">Get the current layout.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#layout.tile">layout.tile ()</a></td>
+	<td class="summary">Default tiled layout.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#layout.tile.horizontal">layout.tile.horizontal ()</a></td>
+	<td class="summary">Horizontally tiled layout with master on the left.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#layout.tile.horizontal.mirror">layout.tile.horizontal.mirror ()</a></td>
+	<td class="summary">Horizontally tiled layout with master on the right.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#layout.tile.vertical">layout.tile.vertical ()</a></td>
+	<td class="summary">Vertically tiled layout with master on the top.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#layout.tile.vertical.mirror">layout.tile.vertical.mirror ()</a></td>
+	<td class="summary">Vertically tiled layout with master on the bottom.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.master">command.master (c)</a></td>
+	<td class="summary">Set the current layout's master client.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.master.toggle">command.master.toggle (c)</a></td>
+	<td class="summary">Toggle the client's master status.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.master.viewtoggle">command.master.viewtoggle ()</a></td>
+	<td class="summary">Toggle the current master client in or out of view.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.master.queue">command.master.queue ()</a></td>
+	<td class="summary">Queue the set master command so that the next client to receive focus
+ becomes the master client.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.master.swap">command.master.swap ()</a></td>
+	<td class="summary">If the focused client is the master, replace it with the first client in
+ the stack.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.master.cycle">command.master.cycle ()</a></td>
+	<td class="summary">If the master client is focused, cycle through clients making each master.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.toggle_centered">command.toggle_centered ()</a></td>
+	<td class="summary">Center all tiled clients according to the tag's master width factor.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.focus.stack">command.focus.stack ()</a></td>
+	<td class="summary">Focus the first client in the stack.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.focus.other">command.focus.other ()</a></td>
+	<td class="summary">If the master client is focused, focus the first client in the stack, and
+ vice versa.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#command.focus.byidx">command.focus.byidx (i, stack)</a></td>
+	<td class="summary">Focus a client by an index relative to the focused client.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#widget.tasklist.filter.stack">widget.tasklist.filter.stack (c, s)</a></td>
+	<td class="summary">A filter to display only stacked clients in the tasklist.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#widget.tasklist.filter.master">widget.tasklist.filter.master (c, s)</a></td>
+	<td class="summary">A filter to display only the master client in the tasklist.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "get_tag"></a>
+    <strong>get_tag (s)</strong>
+    </dt>
+    <dd>
+    Override this function to change how dovetail determines the current tag.
+ The function takes the current screen.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+         The current screen.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">dovetail.get_tag = custom_get_tag</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "layout.master"></a>
+    <strong>layout.master (s)</strong>
+    </dt>
+    <dd>
+    Get the master client.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+         The screen.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The master client.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "layout.masterp"></a>
+    <strong>layout.masterp (c)</strong>
+    </dt>
+    <dd>
+    Master client predicate.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">c</span>
+         The client.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <code>true</code> if the client is the current layout's master client.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "layout.get"></a>
+    <strong>layout.get (s)</strong>
+    </dt>
+    <dd>
+    Get the current layout.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+         The screen.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The screen's layout.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "layout.tile"></a>
+    <strong>layout.tile ()</strong>
+    </dt>
+    <dd>
+    Default tiled layout.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "layout.tile.horizontal"></a>
+    <strong>layout.tile.horizontal ()</strong>
+    </dt>
+    <dd>
+    Horizontally tiled layout with master on the left.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "layout.tile.horizontal.mirror"></a>
+    <strong>layout.tile.horizontal.mirror ()</strong>
+    </dt>
+    <dd>
+    Horizontally tiled layout with master on the right.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "layout.tile.vertical"></a>
+    <strong>layout.tile.vertical ()</strong>
+    </dt>
+    <dd>
+    Vertically tiled layout with master on the top.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "layout.tile.vertical.mirror"></a>
+    <strong>layout.tile.vertical.mirror ()</strong>
+    </dt>
+    <dd>
+    Vertically tiled layout with master on the bottom.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.master"></a>
+    <strong>command.master (c)</strong>
+    </dt>
+    <dd>
+    Set the current layout's master client.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">c</span>
+         The client.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.master.toggle"></a>
+    <strong>command.master.toggle (c)</strong>
+    </dt>
+    <dd>
+    Toggle the client's master status.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">c</span>
+         The client.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.master.viewtoggle"></a>
+    <strong>command.master.viewtoggle ()</strong>
+    </dt>
+    <dd>
+    Toggle the current master client in or out of view.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.master.queue"></a>
+    <strong>command.master.queue ()</strong>
+    </dt>
+    <dd>
+    Queue the set master command so that the next client to receive focus
+ becomes the master client.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.master.swap"></a>
+    <strong>command.master.swap ()</strong>
+    </dt>
+    <dd>
+    If the focused client is the master, replace it with the first client in
+ the stack.  If it's not the master client, make it the master.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.master.cycle"></a>
+    <strong>command.master.cycle ()</strong>
+    </dt>
+    <dd>
+    If the master client is focused, cycle through clients making each master.
+ If the stack is focused, cycle through clients other than the focused client.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.toggle_centered"></a>
+    <strong>command.toggle_centered ()</strong>
+    </dt>
+    <dd>
+    Center all tiled clients according to the tag's master width factor.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.focus.stack"></a>
+    <strong>command.focus.stack ()</strong>
+    </dt>
+    <dd>
+    Focus the first client in the stack.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.focus.other"></a>
+    <strong>command.focus.other ()</strong>
+    </dt>
+    <dd>
+    If the master client is focused, focus the first client in the stack, and
+ vice versa.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "command.focus.byidx"></a>
+    <strong>command.focus.byidx (i, stack)</strong>
+    </dt>
+    <dd>
+    Focus a client by an index relative to the focused client.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">i</span>
+         The relative index.
+        </li>
+        <li><span class="parameter">stack</span>
+         If <code>true</code>, only clients in the stack will be focused.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "widget.tasklist.filter.stack"></a>
+    <strong>widget.tasklist.filter.stack (c, s)</strong>
+    </dt>
+    <dd>
+    A filter to display only stacked clients in the tasklist.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">c</span>
+         The client.
+        </li>
+        <li><span class="parameter">s</span>
+         The screen.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <code>true</code> if the client is in the screen's stack.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "widget.tasklist.filter.master"></a>
+    <strong>widget.tasklist.filter.master (c, s)</strong>
+    </dt>
+    <dd>
+    A filter to display only the master client in the tasklist.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">c</span>
+         The client.
+        </li>
+        <li><span class="parameter">s</span>
+         The screen.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <code>true</code> if the client is the screen's master client.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-10-03 16:35:22 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
