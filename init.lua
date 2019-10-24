@@ -431,23 +431,6 @@ function dovetail.command.focus.other()
     end)
 end
 
---- Focus a client by an index relative to the focused client.
---
--- @param i The relative index.
--- @param stack If `true`, only clients in the stack will be focused.
--- @function command.focus.byidx
-function dovetail.command.focus.byidx(i, stack)
-    with_layout(function (layout)
-        local target = awful.client.next(i)
-        if target then
-            if stack and target == layout.master_client then
-                target = awful.client.next(math.abs(i) > i and -1 or 1, target)
-            end
-            set_focus(target, "dovetail.command.focus.byidx")
-        end
-    end)
-end
-
 dovetail.widget = {}
 dovetail.widget.tasklist = {}
 dovetail.widget.tasklist.filter = {}
