@@ -381,12 +381,41 @@ function dovetail.command.toggle_centered()
 end
 
 dovetail.command.focus = {}
+dovetail.command.focus.stack = {}
+
+local function stack_next(layout, s, i)
+    local target = awful.client.next(i, get_stack(s))
+    if target == layout.master_client then
+        target = awful.client.next(math.abs(i) > i and -1 or 1, target)
+    end
+    return target
+end
 
 --- Focus the first client in the stack.
 -- @function command.focus.stack
-function dovetail.command.focus.stack()
+local function focus_stack()
     local c = get_stack(awful.screen.focused())
     set_focus(c, "dovetail.command.focus.stack")
+end
+
+setmetatable(dovetail.command.focus.stack, {__call = focus_stack})
+
+--- Focus the next client in the stack.
+-- @function command.focus.stack.next
+function dovetail.command.focus.stack.next()
+    with_layout(function (layout, s)
+        set_focus(stack_next(layout, s, 1),
+            "dovetail.command.focus.stack.next")
+    end)
+end
+
+--- Focus the previous client in the stack.
+-- @function command.focus.stack.previous
+function dovetail.command.focus.stack.previous()
+    with_layout(function (layout, s)
+        set_focus(stack_next(layout, s, -1),
+            "dovetail.command.focus.stack.previous")
+    end)
 end
 
 --- If the master client is focused, focus the first client in the stack, and
