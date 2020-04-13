@@ -1,7 +1,9 @@
 # awesome-dovetail
 
 awesome-dovetail is a layout for [Awesome](https://github.com/awesomeWM/awesome)
-featuring two visible tiled clients.
+featuring two visible tiled clients. It is similar to the
+[*deck*](https://dwm.suckless.org/patches/deck/) layout in other dynamic window
+managers.
 
 ## Installation
 
