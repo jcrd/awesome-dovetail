@@ -78,15 +78,19 @@ local function new_layout(ornt, mirror)
         if c == layout.master_client then return end
 
         local list = layout.master_client
+        layout.master_client = c
+        if list then
+            list:emit_signal("dovetail::master::update", false)
+        end
         if c then
             if layout.track_master_history then
                 layout.master.history.add(c)
             end
             layout.centered = false
             c:connect_signal("untagged", master_untagged)
+            c:emit_signal("dovetail::master::update", true)
             list = c
         end
-        layout.master_client = c
         if list then list:emit_signal("list") end
     end
 
