@@ -187,7 +187,7 @@ end
 local function with_layout(f, s)
     s = s or awful.screen.focused()
     local layout = dovetail.get_tag(s).layout
-    if layout.type == "dovetail" then return f(layout, s) end
+    if layout and layout.type == "dovetail" then return f(layout, s) end
 end
 
 dovetail.layout = {}
