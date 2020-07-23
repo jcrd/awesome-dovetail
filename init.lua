@@ -70,6 +70,7 @@ local function new_layout(ornt, mirror)
         remove_history(c, t.layout)
         c:disconnect_signal("untagged", master_untagged)
         if c == t.layout.master_client then
+            t.layout.master_client = nil
             t.layout.master.set(t.layout.master.history.get(0))
         end
     end
