@@ -23,7 +23,7 @@ local dovetail = require("awesome-dovetail")
 Add it to your layouts:
 ```lua
 awful.layout.layouts = {
-    dovetail.layout.tile,
+    dovetail.layout.right,
 }
 ```
 
@@ -32,14 +32,14 @@ Or initialize your tags with it:
 awful.tag(
     {"1", "2", "3"},
     s,
-    dovetail.layout.tile.vertical,
+    dovetail.layout.top,
 )
 ```
 
 Or create a new tag using it:
 ```lua
 awful.tag.add("dovetail", {
-    layout = dovetail.layout.tile.horizontal.mirror,
+    layout = dovetail.layout.left,
 })
 ```
 
