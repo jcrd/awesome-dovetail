@@ -130,7 +130,9 @@ dovetail.layout.top = {
 }
 
 local function set_focus(c, name)
-    c:emit_signal("request::activate", name, {raise=true})
+    if c then
+        c:emit_signal("request::activate", name, {raise=true})
+    end
 end
 
 local function with_focus(func, c)
