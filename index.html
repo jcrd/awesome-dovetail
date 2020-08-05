@@ -47,7 +47,7 @@
 <p></p>
     <h3>Info:</h3>
     <ul>
-        <li><strong>Copyright</strong>: 2019 James Reed</li>
+        <li><strong>Copyright</strong>: 2019-2020 James Reed</li>
         <li><strong>Author</strong>: James Reed &lt;jcrd@tuta.io&gt;</li>
     </ul>
 
@@ -59,91 +59,33 @@
 	<td class="summary">Override this function to change how dovetail determines the current tag.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#layout.master">layout.master (s)</a></td>
-	<td class="summary">Get the master client.</td>
+	<td class="name" nowrap><a href="#layout">layout ()</a></td>
+	<td class="summary">Check if the current layout is a dovetail layout.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#layout.masterp">layout.masterp (c)</a></td>
-	<td class="summary">Master client predicate.</td>
+	<td class="name" nowrap><a href="#layout.right">layout.right ()</a></td>
+	<td class="summary">Horizontally tiled layout with stack on the right.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#layout.get">layout.get (s)</a></td>
-	<td class="summary">Get the current layout.</td>
+	<td class="name" nowrap><a href="#layout.left">layout.left ()</a></td>
+	<td class="summary">Horizontally tiled layout with stack on the left.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#layout.tile">layout.tile ()</a></td>
-	<td class="summary">Default tiled layout.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#layout.tile.horizontal">layout.tile.horizontal ()</a></td>
-	<td class="summary">Horizontally tiled layout with master on the left.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#layout.tile.horizontal.mirror">layout.tile.horizontal.mirror ()</a></td>
-	<td class="summary">Horizontally tiled layout with master on the right.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#layout.tile.vertical">layout.tile.vertical ()</a></td>
-	<td class="summary">Vertically tiled layout with master on the top.</td>
+	<td class="name" nowrap><a href="#layout.bottom">layout.bottom ()</a></td>
+	<td class="summary">Vertically tiled layout with stack on the bottom.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#layout.tile.vertical.mirror">layout.tile.vertical.mirror ()</a></td>
-	<td class="summary">Vertically tiled layout with master on the bottom.</td>
+	<td class="summary">Vertically tiled layout with stack on the top.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#command.master">command.master (c)</a></td>
-	<td class="summary">Set the current layout's master client.</td>
+	<td class="name" nowrap><a href="#focus.next">focus.next (i)</a></td>
+	<td class="summary">Focus a client in the stack by its relative index.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#command.master.toggle">command.master.toggle (c)</a></td>
-	<td class="summary">Toggle the client's master status.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.master.viewtoggle">command.master.viewtoggle ()</a></td>
-	<td class="summary">Toggle the current master client in or out of view.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.master.queue">command.master.queue ()</a></td>
-	<td class="summary">Queue the set master command so that the next client to receive focus
- becomes the master client.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.master.swap">command.master.swap ()</a></td>
-	<td class="summary">If the focused client is the master, replace it with the first client in
- the stack.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.master.cycle">command.master.cycle ()</a></td>
-	<td class="summary">If the master client is focused, cycle through clients making each master.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.toggle_centered">command.toggle_centered ()</a></td>
-	<td class="summary">Center all tiled clients according to the tag's master width factor.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.focus.stack">command.focus.stack ()</a></td>
-	<td class="summary">Focus the first client in the stack.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.focus.stack.next">command.focus.stack.next ()</a></td>
-	<td class="summary">Focus the next client in the stack.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.focus.stack.previous">command.focus.stack.previous ()</a></td>
-	<td class="summary">Focus the previous client in the stack.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#command.focus.other">command.focus.other ()</a></td>
-	<td class="summary">If the master client is focused, focus the first client in the stack, and
+	<td class="name" nowrap><a href="#focus.other">focus.other ()</a></td>
+	<td class="summary">If the master client is focused, focus the visible client in the stack, and
  vice versa.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#widget.tasklist.filter.stack">widget.tasklist.filter.stack (c, s)</a></td>
-	<td class="summary">A filter to display only stacked clients in the tasklist.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#widget.tasklist.filter.master">widget.tasklist.filter.master (c, s)</a></td>
-	<td class="summary">A filter to display only the master client in the tasklist.</td>
 	</tr>
 </table>
 
@@ -181,24 +123,18 @@
 
 </dd>
     <dt>
-    <a name = "layout.master"></a>
-    <strong>layout.master (s)</strong>
+    <a name = "layout"></a>
+    <strong>layout ()</strong>
     </dt>
     <dd>
-    Get the master client.
+    Check if the current layout is a dovetail layout.
 
 
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">s</span>
-         The screen.
-        </li>
-    </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        The master client.
+        <code>true</code> if the current layout is a dovetail layout.
     </ol>
 
 
@@ -206,61 +142,11 @@
 
 </dd>
     <dt>
-    <a name = "layout.masterp"></a>
-    <strong>layout.masterp (c)</strong>
+    <a name = "layout.right"></a>
+    <strong>layout.right ()</strong>
     </dt>
     <dd>
-    Master client predicate.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">c</span>
-         The client.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        <code>true</code> if the client is the current layout's master client.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "layout.get"></a>
-    <strong>layout.get (s)</strong>
-    </dt>
-    <dd>
-    Get the current layout.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">s</span>
-         The screen.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        The screen's layout.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "layout.tile"></a>
-    <strong>layout.tile ()</strong>
-    </dt>
-    <dd>
-    Default tiled layout.
+    Horizontally tiled layout with stack on the right.
 
 
 
@@ -270,11 +156,11 @@
 
 </dd>
     <dt>
-    <a name = "layout.tile.horizontal"></a>
-    <strong>layout.tile.horizontal ()</strong>
+    <a name = "layout.left"></a>
+    <strong>layout.left ()</strong>
     </dt>
     <dd>
-    Horizontally tiled layout with master on the left.
+    Horizontally tiled layout with stack on the left.
 
 
 
@@ -284,25 +170,11 @@
 
 </dd>
     <dt>
-    <a name = "layout.tile.horizontal.mirror"></a>
-    <strong>layout.tile.horizontal.mirror ()</strong>
+    <a name = "layout.bottom"></a>
+    <strong>layout.bottom ()</strong>
     </dt>
     <dd>
-    Horizontally tiled layout with master on the right.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "layout.tile.vertical"></a>
-    <strong>layout.tile.vertical ()</strong>
-    </dt>
-    <dd>
-    Vertically tiled layout with master on the top.
+    Vertically tiled layout with stack on the bottom.
 
 
 
@@ -316,7 +188,7 @@
     <strong>layout.tile.vertical.mirror ()</strong>
     </dt>
     <dd>
-    Vertically tiled layout with master on the bottom.
+    Vertically tiled layout with stack on the top.
 
 
 
@@ -326,17 +198,17 @@
 
 </dd>
     <dt>
-    <a name = "command.master"></a>
-    <strong>command.master (c)</strong>
+    <a name = "focus.next"></a>
+    <strong>focus.next (i)</strong>
     </dt>
     <dd>
-    Set the current layout's master client.
+    Focus a client in the stack by its relative index.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">c</span>
-         The client.
+        <li><span class="parameter">i</span>
+         The index.
         </li>
     </ul>
 
@@ -346,206 +218,15 @@
 
 </dd>
     <dt>
-    <a name = "command.master.toggle"></a>
-    <strong>command.master.toggle (c)</strong>
+    <a name = "focus.other"></a>
+    <strong>focus.other ()</strong>
     </dt>
     <dd>
-    Toggle the client's master status.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">c</span>
-         The client.
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.master.viewtoggle"></a>
-    <strong>command.master.viewtoggle ()</strong>
-    </dt>
-    <dd>
-    Toggle the current master client in or out of view.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.master.queue"></a>
-    <strong>command.master.queue ()</strong>
-    </dt>
-    <dd>
-    Queue the set master command so that the next client to receive focus
- becomes the master client.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.master.swap"></a>
-    <strong>command.master.swap ()</strong>
-    </dt>
-    <dd>
-    If the focused client is the master, replace it with the first client in
- the stack.  If it's not the master client, make it the master.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.master.cycle"></a>
-    <strong>command.master.cycle ()</strong>
-    </dt>
-    <dd>
-    If the master client is focused, cycle through clients making each master.
- If the stack is focused, cycle through clients other than the focused client.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.toggle_centered"></a>
-    <strong>command.toggle_centered ()</strong>
-    </dt>
-    <dd>
-    Center all tiled clients according to the tag's master width factor.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.focus.stack"></a>
-    <strong>command.focus.stack ()</strong>
-    </dt>
-    <dd>
-    Focus the first client in the stack.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.focus.stack.next"></a>
-    <strong>command.focus.stack.next ()</strong>
-    </dt>
-    <dd>
-    Focus the next client in the stack.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.focus.stack.previous"></a>
-    <strong>command.focus.stack.previous ()</strong>
-    </dt>
-    <dd>
-    Focus the previous client in the stack.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "command.focus.other"></a>
-    <strong>command.focus.other ()</strong>
-    </dt>
-    <dd>
-    If the master client is focused, focus the first client in the stack, and
+    If the master client is focused, focus the visible client in the stack, and
  vice versa.
 
 
 
-
-
-
-
-</dd>
-    <dt>
-    <a name = "widget.tasklist.filter.stack"></a>
-    <strong>widget.tasklist.filter.stack (c, s)</strong>
-    </dt>
-    <dd>
-    A filter to display only stacked clients in the tasklist.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">c</span>
-         The client.
-        </li>
-        <li><span class="parameter">s</span>
-         The screen.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        <code>true</code> if the client is in the screen's stack.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "widget.tasklist.filter.master"></a>
-    <strong>widget.tasklist.filter.master (c, s)</strong>
-    </dt>
-    <dd>
-    A filter to display only the master client in the tasklist.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">c</span>
-         The client.
-        </li>
-        <li><span class="parameter">s</span>
-         The screen.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        <code>true</code> if the client is the screen's master client.
-    </ol>
 
 
 
@@ -558,7 +239,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2019-10-23 18:34:53 </i>
+<i style="float:right;">Last updated 2020-08-05 14:44:24 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
