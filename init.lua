@@ -172,7 +172,7 @@ end
 --- vice versa.
 -- @function focus.other
 function dovetail.focus.other()
-    local name = "dovetail.focus.byidx"
+    local name = "dovetail.focus.other"
     with_focus(function (c, master, stack)
         if c == master then
             set_focus(stack, name)
