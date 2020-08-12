@@ -122,7 +122,7 @@ dovetail.layout.bottom = {
 
 --- Vertically tiled layout with stack on the top.
 --
--- @function layout.tile.vertical.mirror
+-- @function layout.top
 dovetail.layout.top = {
     name = "dovetail.layout.top",
     arrange = function (p) arrange(p, "vertical", true) end,
