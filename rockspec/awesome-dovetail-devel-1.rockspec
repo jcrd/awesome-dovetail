@@ -7,7 +7,7 @@ source = {
 description = {
     summary = "AwesomeWM layout featuring two visible tiled clients",
     homepage = "https://github.com/jcrd/awesome-dovetail",
-    license = "GPL-3.0",
+    license = "MIT",
 }
 dependencies = {
     "lua >= 5.1",

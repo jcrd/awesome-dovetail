@@ -1,3 +1,5 @@
+-- This project is licensed under the MIT License (see LICENSE).
+
 --- A tiling layout featuring two visible tiled clients.
 --
 -- @author James Reed &lt;jcrd@tuta.io&gt;
