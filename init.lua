@@ -155,12 +155,14 @@ dovetail.focus = {}
 function dovetail.focus.byidx(i)
     local name = "dovetail.focus.byidx"
     with_focus(function (c, master, stack)
-        local m = c == master
-        if m then
+        if c == master then
+            if not stack then
+                return
+            end
             c = stack
         end
         local n = awful.client.next(i, c)
-        while n do
+        while n and n ~= c do
             if n ~= master then
                 set_focus(n, name)
                 break
