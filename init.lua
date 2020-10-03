@@ -151,7 +151,7 @@ dovetail.focus = {}
 
 --- Focus a client in the stack by its relative index.
 -- @param i The index.
--- @function focus.next
+-- @function focus.byidx
 function dovetail.focus.byidx(i)
     local name = "dovetail.focus.byidx"
     with_focus(function (c, master, stack)
