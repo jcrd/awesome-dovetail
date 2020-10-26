@@ -144,20 +144,28 @@ local function with_focus(func, c)
     end
     local master = awful.client.getmaster(c.screen)
     local z = c.screen.tiled_clients
-    func(c, master, z[2])
+    return func(c, master, z[2])
 end
 
 dovetail.focus = {}
 
 --- Focus a client in the stack by its relative index.
 -- @param i The index.
+-- @return `true` if conditions were met to search for a client.
+-- If `false`, a fallback `focus.byidx` method should be used.
 -- @function focus.byidx
 function dovetail.focus.byidx(i)
     local name = "dovetail.focus.byidx"
-    with_focus(function (c, master, stack)
+    if not dovetail.layout() then
+        return false
+    end
+    return with_focus(function (c, master, stack)
+        if c.floating then
+            return false
+        end
         if c == master then
             if not stack then
-                return
+                return false
             end
             c = stack
         end
@@ -169,6 +177,7 @@ function dovetail.focus.byidx(i)
             end
             n = awful.client.next(i, n)
         end
+        return true
     end)
 end
 
