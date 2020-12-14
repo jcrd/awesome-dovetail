@@ -83,12 +83,13 @@ end
 
 dovetail.layout = {}
 
---- Check if the current layout is a dovetail layout.
+--- Check if a layout is a dovetail layout.
 --
--- @return `true` if the current layout is a dovetail layout.
+-- @param layout The layout or the current layout if nil.
+-- @return `true` if layout is a dovetail layout.
 -- @function layout
-setmetatable(dovetail.layout, {__call = function ()
-    return gears.string.startswith(awful.layout.getname(), "dovetail")
+setmetatable(dovetail.layout, {__call = function (layout)
+    return gears.string.startswith(awful.layout.getname(layout), "dovetail")
 end})
 
 function dovetail.layout.skip_gap(nclients)
