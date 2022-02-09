@@ -138,14 +138,21 @@ local function set_focus(c, name)
     end
 end
 
+local function get_clients(s)
+    local m = awful.client.getmaster(s)
+    for _, c in ipairs(s.tiled_clients) do
+        if c ~= m then
+            return m, c
+        end
+    end
+    return m, nil
+end
+
 local function with_focus(func, c)
     c = c or client.focus
-    if not c then
-        return
+    if c then
+        return func(c, get_clients(c.screen))
     end
-    local master = awful.client.getmaster(c.screen)
-    local z = c.screen.tiled_clients
-    return func(c, master, z[2])
 end
 
 dovetail.focus = {}
