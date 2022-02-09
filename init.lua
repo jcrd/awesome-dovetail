@@ -42,15 +42,15 @@ local function arrange(p, ornt, mirror)
 
     -- Client geometries are directly manipulated by awesome.
     -- See https://github.com/awesomeWM/awesome/issues/2676
-    function new_geom(g)
+    local function new_geom(g)
         return {x = g.x, y = g.y, width = g.width, height = g.height}
     end
 
-    function set_geom(c, g)
+    local function set_geom(c, g)
         p.geometries[c] = new_geom(g)
     end
 
-    function arrange_stack(g)
+    local function arrange_stack(g)
         for i, c in ipairs(cls) do
             if i > 1 then
                 set_geom(c, g)
