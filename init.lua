@@ -88,7 +88,7 @@ dovetail.layout = {}
 -- @param layout The layout or the current layout if nil.
 -- @return `true` if layout is a dovetail layout.
 -- @function layout
-setmetatable(dovetail.layout, {__call = function (layout)
+setmetatable(dovetail.layout, {__call = function (_, layout)
     return gears.string.startswith(awful.layout.getname(layout), "dovetail")
 end})
 
