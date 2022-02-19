@@ -203,4 +203,57 @@ function dovetail.focus.other()
     end)
 end
 
+dovetail.master = {}
+
+--- Swap master client with top stack, focusing stack.
+-- @param no_swap If `true`, only swaps if master client is focused.
+-- @function master.demote
+function dovetail.master.demote(no_swap)
+    local name = "dovetail.master.demote"
+    with_focus(function (c, master, stack)
+        if c == stack and no_swap then
+            return
+        end
+        awful.client.setmaster(stack)
+        if c ~= master then
+            set_focus(master, name)
+        end
+    end)
+end
+
+--- Swap top stack client with master, focusing master.
+-- @param no_swap If `true`, only swaps if top stack client is focused.
+-- @function master.promote
+function dovetail.master.promote(no_swap)
+    local name = "dovetail.master.promote"
+    with_focus(function (c, master, stack)
+        if c == master and no_swap then
+            return
+        end
+        if master then
+            master:raise()
+        end
+        awful.client.setmaster(stack)
+        set_focus(stack, name)
+    end)
+end
+
+--- Send master client to bottom of stack and replace with top stack client,
+--- maintaining focus.
+-- @function master.cycle
+function dovetail.master.cycle()
+    local name = "dovetail.master.cycle"
+    with_focus(function (c, master, stack)
+        if master then
+            master:lower()
+        end
+        local next = awful.client.next(1, stack, true)
+        awful.client.setmaster(stack)
+        if c == stack then
+            stack = next
+        end
+        set_focus(stack, name)
+    end)
+end
+
 return dovetail
