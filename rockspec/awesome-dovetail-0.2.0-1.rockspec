@@ -1,8 +1,8 @@
 package = "awesome-dovetail"
-version = "0.1.1-1"
+version = "0.2.0-1"
 source = {
     url = "git://github.com/jcrd/awesome-dovetail",
-    tag = "v0.1.1",
+    tag = "v0.2.0",
 }
 description = {
     summary = "AwesomeWM layout featuring two visible tiled clients",
